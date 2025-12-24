@@ -180,21 +180,26 @@ document.getElementById("reviewForm").addEventListener("submit", function(e) {
 
   fetch("https://script.google.com/macros/s/AKfycbyMIUnbB6tezi61d2gOF4ffoidnJphJVtarBcSoUszxJu-Nf08MSbLafx7cPksOfGCJw/exec", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       comment: document.getElementById("comment").value
     })
   })
-  .then(res => res.json())
+  .then(res => res.text())
   .then(data => {
     alert("Review submitted successfully!");
     document.getElementById("reviewForm").reset();
+  })
+  .catch(err => {
+    alert("Error! Console check");
+    console.error(err);
   });
 });
 </script>
-
-
 
 </body>
 </html>
