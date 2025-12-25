@@ -155,18 +155,18 @@
                 <div id="review">
                     <h2 class="heading">Review</h2>
                     <div class="line"></div>
-                    <form action="" class="review-form" id="reviewForm">
+                    <form action="https://sheetdb.io/api/v1/2id3wtqgdpimy" method="post" class="review-form" id="reviewForm">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="data[Name]" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="data[Email]" required>
                         </div>
                         <div class="form-group">
                             <label for="comment">Comment</label>
-                            <textarea id="comment" name="comment" rows="4" required></textarea>
+                            <textarea id="comment" name="data[Comment]" rows="4" required></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Submit Review</button>
                     </form>
@@ -174,39 +174,7 @@
          </div>
     </div>
 <!-- JavaScript -->
-<script>
-const form = document.getElementById("reviewForm");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const comment = document.getElementById("comment").value;
-
-    const data = { name, email, comment };
-
-    try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwQ4kFpM0bjfnHhvxgESiF2cdAiF0Z8tKnq0D3TaqEnMWRuSjrAsiVBoULTqOxC0Ne8Og/exec", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        if (response.ok) {
-            alert("Review submitted successfully!");
-            form.reset();
-        } else {
-            alert("Failed to submit review. Try again.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Error submitting review.");
-    }
-});
-</script>
 
 </body>
 </html>
